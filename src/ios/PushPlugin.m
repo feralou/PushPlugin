@@ -196,10 +196,11 @@
         else if ([thisObject isKindOfClass:[NSString class]])
              [jsonString appendFormat:@"\"%@\":\"%@\",",
               key,
-              [[[[inDictionary objectForKey:key]
+              [[[[[inDictionary objectForKey:key]
                 stringByReplacingOccurrencesOfString:@"\\" withString:@"\\\\"]
                  stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]
-                 stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]];
+                 stringByReplacingOccurrencesOfString:@"\n" withString:@"\\n"]
+                 stringByReplacingOccurrencesOfString:@"\r" withString:@"\\r"]];
         else {
             [jsonString appendFormat:@"\"%@\":\"%@\",", key, [inDictionary objectForKey:key]];
         }
